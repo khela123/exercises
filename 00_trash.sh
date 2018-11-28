@@ -29,7 +29,7 @@ for var in $@;
             mkdir -p ~/.mytrash/
             mv "$var" ~/.mytrash/
 done
-			echo "Trashing files"
+	echo "Trashing files"
 ;;
 
 esac
