@@ -1,16 +1,5 @@
 #!/bin/bash
 
-
-# for var in "$@"
-# 	do 
-# 		[ ! -d ~/.mytrash/ ] && mkdir ~/.mytrash/
-# 		mv "$var" ~/.mytrash/
-#         echo "Trashing files"
-
-# done
-
-
-
 function funcEmpty()
 {
 	read -p "Are you sure you want to empty the trash?[Y/N]" answer
@@ -19,7 +8,8 @@ function funcEmpty()
 	[yY])
 
 		rm -r .mytrash/*
-		echo "Trash is already empty"
+		echo "Emptying Trash"
+		echo "Trash is empty"
 		;;
 
 	[nN]) exit;;
@@ -28,18 +18,20 @@ function funcEmpty()
 }
 
 case $1 in -e)
+
     funcEmpty
     # empty the trash
 ;;  
  *) 
+
 for var in $@; 
     do
-            [ ! -d ~/.mytrash/ ] && mkdir ~/.mytrash/
+            mkdir -p ~/.mytrash/
             mv "$var" ~/.mytrash/
-    echo "Trashing files"
 done
+			echo "Trashing files"
 ;;
 
 esac
- exit 0
+exit 0
 
