@@ -12,7 +12,7 @@ class Birthdays:
         self.entries = []
 
     def read_input(self):
-        row = []
+        rows = []
         
         # with open('./journal.txt') as f:
         #     lines = f.readlines()
@@ -22,24 +22,35 @@ class Birthdays:
             for row in reader:
                 print (row)
 
-        # for row in lines:
-        #     date, name = row.split('|')
-        #     self.add_entry(date, name)
+        for line in rows:
+            # date, name = row.split('|')
+            self.add_entry(date, name)
 
-        # return lines
+        return row
+    def add_entry(self, date, name):
+        self.entries.append({
+            'date': date,
+            'name': name
+        })
+
+    # def export_entries(self, file_name):
+    #     with open(file_name, 'w') as f:
+    #         f.writelines([
+    #             '{date}|{name}'.format_map(entry)
+    #             for entry in self.entries
+    #         ])
+
+    # def view_entries(self):
+    #         print('Date\t   | Name')
+    #         print('---' * 8)
+    #         for entry in self.entries:
+    #             date, text = entry.values()
+    #             print(date, '|', end=' ')
+    #             print(name)    
 
 
-    def add_entry(self):
-        import csv
-        with open(r'birthdays.csv', 'a', newline='') as csvfile:
-      		fieldnames = ['2001/06/16',' ', 'Aldrin A. Navarro']
-    		writer = csv.writer(csvfile)
-    		writer.writerow(fieldnames)
-
-    csvfile.close()
 
 birthdays = Birthdays()
 birthdays.read_input()
 print(birthdays)
-birthdays = add_entry()
-# birthdays.export_entries(file_name='birthdays.csv')
+# birthdays.export_entries(file_name='birthdays2.csv')
