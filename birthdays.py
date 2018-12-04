@@ -29,26 +29,17 @@ class Birthdays:
         # return lines
 
 
-   
-    def add_entry(self, date, text):s
+    def add_entry(self):
         import csv
-        with open('./birthdays.csv', 'w', newline='') as f:
-            fieldnames = ['date', 'name']
-            writer = csv.DictWriter(f, fieldnames= fieldnames)
-            writer.writeheader()
-            writer.writerow({'date': '3245235', 'name': 'dgasdg'})
-   # def add_entry(self, date, text):
-  #   	import csv
-    	
-		# with open('./birthdays.csv', 'w', newline='') as f:
-		# 	fieldnames = ['date', 'name']
-		#     writer = csv.DictWriter(f, fieldnames= fieldnames)
-		#     write.writeheader()
-		#     writer.writerow(['435', 'dfsg'])
+        with open(r'birthdays.csv', 'a', newline='') as csvfile:
+      		fieldnames = ['2001/06/16',' ', 'Aldrin A. Navarro']
+    		writer = csv.writer(csvfile)
+    		writer.writerow(fieldnames)
 
-		f.close()	
+    csvfile.close()
 
-# birthdays = Birthdays()
-# birthdays.read_input()
-# print(birthdays)
+birthdays = Birthdays()
+birthdays.read_input()
+print(birthdays)
+birthdays = add_entry()
 # birthdays.export_entries(file_name='birthdays.csv')
