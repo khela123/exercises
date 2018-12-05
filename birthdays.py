@@ -1,56 +1,50 @@
-class Birthdays:
-    # xRead from an input file
-    # xAdd entry to journal
-    # xView entries
-    # xSearch entries
-    # Edit entries
-    # Delete entries
-    # xExport 
+class Birthdays:    
 
-    def __init__(self):
-        self.birthday_id = 1
-        self.entries = []
+
+
+
+
+    def export_entry(self, file_name):
+        import csv
+        with open('./birthdays.csv', 'r') as csvfiles
+            csvreader = csv.reader(csvfiles, delimiter='\t')
+
+            with open('copy_birthdays.csv', 'w') as newfile:
+                csvwriter = csv.writer(newfile, delimiter='\t')
+
+                for line in csvreader:
+                    csvwriter.writerow(line)
 
     def read_input(self):
-        rows = []
-        
-        # with open('./journal.txt') as f:
-        #     lines = f.readlines()
+        # rows = []
         import csv
-        with open('./birthdays.csv',  newline='') as f:
-            reader = csv.reader(f)
-            for row in reader:
-                print (row)
+        with open('birthdays.csv', 'r') as csvfiles:
+            csvreader = csv.reader(csvfiles, delimiter='\t')
+            next(csvreader)
 
-        for line in rows:
-            # date, name = row.split('|')
-            self.add_entry(date, name)
+            for line in csvreader:
+                print(line)
 
-        return row
-    def add_entry(self, date, name):
-        self.entries.append({
-            'date': date,
-            'name': name
-        })
+    def view_entries(self):
+        import csv
+        with open('birthdays.csv','r') as csvfiles:
+            csvreader = csv.DictReader(csvfiles)
 
-    # def export_entries(self, file_name):
-    #     with open(file_name, 'w') as f:
-    #         f.writelines([
-    #             '{date}|{name}'.format_map(entry)
-    #             for entry in self.entries
-    #         ])
+            for line in csvreader:
+                print (line)
 
-    # def view_entries(self):
-    #         print('Date\t   | Name')
-    #         print('---' * 8)
-    #         for entry in self.entries:
-    #             date, text = entry.values()
-    #             print(date, '|', end=' ')
-    #             print(name)    
+    def search_entries(self, query=''):
+        matched_entries = [entry for entry in self.entries if query in entry['name']]
+        print(matched_entries)
+        return matched_entries            
+        # ournal.search_entries(query='Tallo')
 
+    def edit_entry(self, name, date)
+        import csv
+        with open(r'birthdays.csv', 'a', newline='') as csvfile:
+            fieldnames = ['2001/06/16', 'Aldrin A. Navarro']
+            writer = csv.writer(csvfile)
+            writer.writerow(fieldnames)
 
+        csvfile.close()
 
-birthdays = Birthdays()
-birthdays.read_input()
-print(birthdays)
-# birthdays.export_entries(file_name='birthdays2.csv')
