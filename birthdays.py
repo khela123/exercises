@@ -6,7 +6,7 @@ class Birthdays:
     # xSearch entries
     # Edit entries
     # Delete entries
-    # xExport 
+    # xExport entries
 
     def __init__(self):
         self.birthday_id = 1
@@ -14,6 +14,7 @@ class Birthdays:
 
     def read_input(self):
         csvreader = []
+        # results = {}
 
         # import csv
         with open('birthdays.csv', 'r') as csvfiles:
@@ -35,27 +36,19 @@ class Birthdays:
                 for line in csvreader:
                     csvwriter.writerow(line)
 
-    def edit_entry(self, name, date):
+    def edit_entries(self, name, date):
         with open(r'birthdays.csv', 'a', newline='') as csvfile:
             fieldnames = ['2001/06/16', 'Aldrin A. Navarro']
             writer = csv.writer(csvfile)
             writer.writerow(fieldnames)
-
-            # w+
-            # read,write, overwrite
-
-        # csvfile.close()
-
-    # def search_entries(self, query=''):
-    #     matched_entries = [entry for entry in self.entries if query in entry['name']]
-    #     print(matched_entries)
-    #     return matched_entries            
-    #     # birthdays.search_entries(query='Tallo')
+        
 
     def __str__(self):
         return 'Birthdays ' + str(self.birthday_id)
 
 birthdays = Birthdays()
-birthdays.read_input()
 print(birthdays)
-birthdays.edit_entry('name', 'date')
+birthdays.read_input()
+birthdays.edit_entries('date', 'name')
+birthdays.export_entries(file_name='copy_birthdays.csv')
+# birthdays.search_entries(query='Tallo')
